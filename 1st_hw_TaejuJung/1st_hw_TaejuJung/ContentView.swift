@@ -1,3 +1,9 @@
+//
+//  ContentView.swift
+//  1st_hw_TaejuJung
+//
+//  Created by 정태주 on 3/17/25.
+//
 
 import SwiftUI
 
@@ -42,7 +48,7 @@ struct ContentView: View {
                         .foregroundStyle(.tint)
                     Text("Hello, iOS Part")
                         .font(.title)
-                    Image("Me")
+                    Image("me")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 180, height: 180)
@@ -60,7 +66,7 @@ struct ContentView: View {
                         .cornerRadius(10)
                     HStack{
                         Button("MBTI"){
-                            print("MBTI 버튼이 클릭됨")
+                            print("더보기 버튼이 클릭됨")
                             shouldShowAlert = true
                         }
                         .font(.system(size:20))
@@ -75,7 +81,7 @@ struct ContentView: View {
                         }
                         message: {Text("INFJ")}
                         
-                            .padding(30)
+                            .padding()
                         
                         Button("더 알아보기"){
                             print("더보기 버튼이 클릭됨")
@@ -85,7 +91,7 @@ struct ContentView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .padding()
-                        .frame(width: 150, height: 50)
+                        .frame(width: 200, height: 50)
                         .background(Color.red)
                         .cornerRadius(20)
                         .alert("정태주에 관한 정보", isPresented: $shouldShowAlert) {
