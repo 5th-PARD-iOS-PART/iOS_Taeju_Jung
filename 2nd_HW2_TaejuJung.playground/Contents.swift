@@ -92,11 +92,11 @@ import Foundation
     let day7 = DayOfWeek(rawValue: 7)
     let dayInvalid = DayOfWeek(rawValue: 0)
 
-    print("\(day1 ?? .sunday)")      // sunday
-    print("\(day2 ?? .sunday)")      // monday
-    print("\(day5 ?? .sunday)")      // thursday
-    print("\(day7 ?? .sunday)")      // saturday
-    print("\(dayInvalid ?? .sunday)")// sunday (기본값)
+    print("\(day1 ?? .sunday)")      
+    print("\(day2 ?? .sunday)")      
+    print("\(day5 ?? .sunday)")      
+    print("\(day7 ?? .sunday)")      
+    print("\(dayInvalid ?? .sunday)")
     
     
     // ---------- Mark : function overloading  ----------------
