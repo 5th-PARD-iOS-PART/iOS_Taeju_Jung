@@ -17,15 +17,16 @@ import Foundation
 //var fruit = "apple" // 이 값을 "banana"나 "cherry"로 바꿔보세요.
 
 // ---------- Mark : if문 답안 작성란  ----------------
-func main(){
-    var fruit = "banana"
-    //let fruit = ["apple", "banana", "cherry"]
-    if ["apple", "banana", "cherry"].contains(fruit) {
-        print(fruit)
+    func main(){
+        var fruit = "banana"
+        //let fruit = ["apple", "banana", "cherry"]
+        if ["apple", "banana", "cherry"].contains(fruit) {
+            print(fruit)
+        }
+    
     }
     
-}
-    
+        main()
   
     
     // ---------- Mark : guard문  ----------------
@@ -42,13 +43,14 @@ func main(){
     // ---------- Mark : guard문 답안 작성란 ----------------
     
     func printPositiveNumber(_ number: Int) {
-        guard number > 0 else {
+        guard number < 0 else {
             print(number)
             return
         }
         print("The number is not positive.")
     }
-    
+    printPositiveNumber(5)
+    printPositiveNumber(-3)
     
     // ---------- Mark : enum 연관값  ----------------
     
@@ -62,7 +64,8 @@ func main(){
     case video(title: String)
     case music(title: String)
     }
-    
+    let myBook: MediaItem = .book(title: "Harry Potter and the Sorcerer's Stone")
+    print("\(myBook)")
     
     // ---------- Mark : enum 원시값 ----------------
     
@@ -80,6 +83,20 @@ func main(){
     case friday = 6
     case saturday = 7
     }
+    let today: DayOfWeek = .sunday
+    print("\(today)")
+
+    let day1 = DayOfWeek(rawValue: 1)
+    let day2 = DayOfWeek(rawValue: 2)
+    let day5 = DayOfWeek(rawValue: 5)
+    let day7 = DayOfWeek(rawValue: 7)
+    let dayInvalid = DayOfWeek(rawValue: 0)
+
+    print("\(day1 ?? .sunday)")      // sunday
+    print("\(day2 ?? .sunday)")      // monday
+    print("\(day5 ?? .sunday)")      // thursday
+    print("\(day7 ?? .sunday)")      // saturday
+    print("\(dayInvalid ?? .sunday)")// sunday (기본값)
     
     
     // ---------- Mark : function overloading  ----------------
@@ -96,6 +113,9 @@ func main(){
     func printArea(radius: Double) {
     print("원의 면적: \(Double.pi * radius * radius)")
     }
+
+printArea(radius: 5)
+printArea(width: 10, height: 20)
     
     // ---------- Mark : function If문사용 / guard문 사용  ----------------
     
@@ -116,6 +136,13 @@ func main(){
     }
 }
 
+checkLoginStatus(isLoggedIn: true, userName: "Alice")
+checkLoginStatus(isLoggedIn: true, userName: nil)
+checkLoginStatus(isLoggedIn: false, userName: "Bob")
+checkLoginStatus(isLoggedIn: false, userName: nil)
+
+
+
     
     // ---------- Mark : function guard문 사용 답안 작성란 ----------------
     
@@ -132,7 +159,10 @@ func LoginStatus(isLoggedIn: Bool, userName: String?){
     print(userName)
 }
     
-    
+LoginStatus(isLoggedIn: true, userName: "Charlie")
+LoginStatus(isLoggedIn: true, userName: nil)
+LoginStatus(isLoggedIn: false, userName: "David")
+LoginStatus(isLoggedIn: false, userName: nil)
     // ---------- Mark : Optional Nil-coalescing 사용  ----------------
     
     //문제 1: Nil-coalescing 연산자 ?? 사용하기
@@ -140,14 +170,17 @@ func LoginStatus(isLoggedIn: Bool, userName: String?){
     //var names: [String] = ["Alice", "Bob", "Charlie"]
     
     // ---------- Mark : Optional Nil-coalescing 사용 답안 작성란  ----------------
+var names: [String] = ["Alice", "Bob", "Charlie"]
+
 func OptionalNilCoalescing(){
-    var names: [String] = ["Alice", "Bob", "Charlie"]
+    
     let firstName = names.first ??  "No name found"
         print("\(firstName)")
    
     }
-
-    
+    OptionalNilCoalescing()
+    names.removeAll()
+    OptionalNilCoalescing()
     // ---------- Mark : Optional if-let 사용  ----------------
     
     //문제 2: if-let을 사용한 옵셔널 바인딩
@@ -156,8 +189,9 @@ func OptionalNilCoalescing(){
     
     
     // ---------- Mark : Optional if-let 사용 답안 작성란 ----------------
+var optionalString: String? = "Hello"
 func OptionalIfLet(){
-    var optionalString: String? = "Hello"
+   
     if let check = optionalString {
         print("The string is:  \(check)")
     }
@@ -165,12 +199,19 @@ func OptionalIfLet(){
         print("The string is nil.")
     }
 }
-    
+
     // ---------- Mark : Optional guard-let 사용 답안 작성란  ----------------
 func OptionalGuardLet(){
-    var optionalString: String? = "Hello"
+    //var optionalString: String? = "Hello"
     guard let check = optionalString else {
         print("The string is nil."); return
     }
     print("The string is:  \(check)")
 }
+
+OptionalIfLet()
+OptionalGuardLet()
+optionalString = nil
+OptionalIfLet()
+OptionalGuardLet()
+
