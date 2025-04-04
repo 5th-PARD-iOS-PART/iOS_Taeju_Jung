@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BankingHeaderSection: View {
+struct TossBanking: View {
     var body: some View {
         Section {
             HStack {
@@ -15,5 +15,5 @@ struct BankingHeaderSection: View {
 }
 
 #Preview {
-    BankingHeaderSection()
+    TossBanking()
 }

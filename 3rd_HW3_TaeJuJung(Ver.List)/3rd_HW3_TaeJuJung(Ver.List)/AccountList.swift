@@ -22,6 +22,7 @@ struct AccountList: View {
                 Text(account.KindOfAccount)
                     .font(.caption)
                     .foregroundColor(.gray)
+                    .contentShape(Rectangle())
             }
             
             Spacer()
@@ -35,22 +36,23 @@ struct AccountList: View {
                     Rectangle()
                         .foregroundColor(.clear)
                         .frame(width: 64, height: 36)
-                        .allowsHitTesting(false) // ✅ 터치 방해 제거
+                        .allowsHitTesting(false)
                 }
             }
-            .onTapGesture {
-                print("Tapped")
-            }
+            
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
             .background(Color.white)
             .cornerRadius(10)
+            .contentShape(Rectangle())
             .listRowSeparator(.hidden)
-            .contentShape(Rectangle()) // ✅ 셀 전체 터치 영역 지정
-            .onTapGesture {
-                print("셀이 눌렸습니다.") // 테스트용
-            }
+            .background(Color.red)
+            
         }
+        .contentShape(Rectangle())
+
+        
+
     }
     
     struct ActionButton: View {
@@ -59,7 +61,7 @@ struct AccountList: View {
         
         var body: some View {
             Button(action: {
-                print("\(title) 버튼 클릭됨11")
+                print("\(title) 버튼 클릭됨")
             }) {
                 Text(title)
                     .font(fontSize)
@@ -68,12 +70,12 @@ struct AccountList: View {
                     .background(Color(.systemGray5))
                     .foregroundColor(.black)
                     .cornerRadius(10)
+                    .contentShape(Rectangle()) //
             }
-            .buttonStyle(BorderlessButtonStyle()) // 버튼만 따로 반응
+            .buttonStyle(BorderlessButtonStyle()) 
         }
     }
 }
 #Preview {
-    
     AccountList(account: MockData.sampleData[0][0], sectionIndex: 0)
 }

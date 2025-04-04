@@ -38,8 +38,6 @@ struct MockData: Identifiable {
                     return "원"
             case "card":
                     return "card"
-                case "TOSS":
-                    return "TOSS"
             default:
                 return "default_bank"
             }
@@ -61,11 +59,10 @@ struct MockData: Identifiable {
           MockData(KindOfAccount: "투자 모아보기 5개", AccountBalance: 900235, BankName: "INVEST")
         ],
         [
-            MockData(KindOfAccount: "4월에 쓴 돈", AccountBalance: 331270, BankName: "TOSS"), // 기업은행
-            MockData(KindOfAccount: "4월 15일 낼 카드값", AccountBalance: 14, BankName: "card")
-        ],
-        [
-            MockData(KindOfAccount: "내 신용점수", AccountBalance: 0, BankName: "신용") // 기업은행
+            MockData(KindOfAccount: "4월에 쓴 돈", AccountBalance: 331270, BankName: "원"), // 기업은행
+            MockData(KindOfAccount: "4월 15일 낼 카드값", AccountBalance: 14, BankName: "card"),
+        ],[
+            MockData(KindOfAccount: "내 신용점수", AccountBalance: 0, BankName: "신용"), // 기업은행
         ]
     ]
 }

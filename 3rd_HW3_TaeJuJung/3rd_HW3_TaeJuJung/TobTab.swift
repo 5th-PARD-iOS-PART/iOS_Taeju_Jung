@@ -14,7 +14,7 @@ struct TopTab: View {
                 .padding(.trailing, 16)
         }
         .frame(height: 60)
-        
+        //.background(Color.white)
         .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 2)
     }
 }
