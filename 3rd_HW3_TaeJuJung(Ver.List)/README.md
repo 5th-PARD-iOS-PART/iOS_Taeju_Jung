@@ -1,7 +1,7 @@
 ## 3rd_HW3_TaejuJung
 Toss Clone Cording
 
-##중요 keyPoint
+
 
 <img width="356" alt="스크린샷 2025-04-07 23 39 25" src="https://github.com/user-attachments/assets/730b4676-5aa8-447a-a02e-259f56bb0d50" />
 <img width="390" alt="스크린샷 2025-04-07 23 38 58" src="https://github.com/user-attachments/assets/d139318c-fd79-4f46-bb54-d7856e0fbb2b" />
