@@ -3,17 +3,27 @@ Toss Clone Cording
 
 ##중요 keyPoint
 
+<img width="356" alt="스크린샷 2025-04-07 23 39 25" src="https://github.com/user-attachments/assets/730b4676-5aa8-447a-a02e-259f56bb0d50" />
+<img width="390" alt="스크린샷 2025-04-07 23 38 58" src="https://github.com/user-attachments/assets/d139318c-fd79-4f46-bb54-d7856e0fbb2b" />
 
-<img width="540" alt="스크린샷 2025-04-04 23 42 20" src="https://github.com/user-attachments/assets/5ecbdcea-f7a3-4364-8cb1-be07efd46929" />
+### 홈 화면 (TabView)
+- TabView를 써서 화면을 5개로 나눔. (홈, 혜택, 쇼핑, 증권, 전체)
+- 그 중에 홈 화면에만 계좌 리스트가 들어 있고, 나머지는 아직 내용 없음.
+- 홈 화면 안에는 상단 탭처럼 보이는 뷰(Toptab)랑 계좌 목록이 있고, 그 아래에는 토스뱅크나 기타 안내 같은 영역도 있음.
 
-ForEach문
-- 데이터 파일안에서의 데이터의 갯수만큼 반복을 실행
+### 계좌 상세 페이지
+- 홈 화면에서 계좌 하나를 누르면 상세 화면으로 넘어감.
+- 날짜별로 거래 내역을 Section으로 나눠서 보여주고, 거래 금액이 양수면 파란색으로, 아니면 기본 텍스트 색으로 나눴음.
+- 시간, 거래명, 잔액 등도 같이 보여줌.
 
+## 데이터 구조
 
-Tag
-- tag는 아래 Tab바에서 원하는 화면으로 이동할 때 사용한다.
+### MockData.swift
+- 홈 화면에 나오는 계좌 정보들
+- 섹션별로 구분된 2차원 배열 형태
+- 계좌 이름, 잔액, 은행 이름이 들어가 있음.
 
-
-List
-- list는 기본적인 디자인은 만들어주고 scrollView 기능까지 있기에 ScrollView와는 같이 사용할 수 없다. 
-- section(){ ... } 안에 들어갈 내용들은 외부 파일로 만들어서 했다. 대신 contentView에서는 List{...} 안에 넣어야 한다.
+### AccountData.swift
+- 각 계좌의 입출금 내역
+- 날짜, 시간, 거래처, 금액, 잔액 포함
+- 날짜별로 묶어서 리스트에 Section으로 표현할 수 있게 만들었음.
