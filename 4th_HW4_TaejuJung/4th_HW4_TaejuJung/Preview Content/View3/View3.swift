@@ -106,7 +106,7 @@ struct View3: View {
     return View3(
         senderAccount: $sender,
         receiverAccount: View1Data.Data1[0][0],
-        amount: 1000, // ✅ 이제 그냥 값 넘기면 됨
+        amount: 1000, 
         path: $path
     )
 }
