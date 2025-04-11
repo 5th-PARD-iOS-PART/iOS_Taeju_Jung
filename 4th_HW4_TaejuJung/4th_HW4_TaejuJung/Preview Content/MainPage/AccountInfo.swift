@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AccountInfo: View {
     var account: MockData
-    @Binding var path: NavigationPath // ← NavigationStack용 path 받기
+    @Binding var path: NavigationPath  // ✅ NavigationTarget 기반이어야 함
 
     var body: some View {
         VStack(spacing: 12) {
@@ -45,7 +45,7 @@ struct AccountInfo: View {
                     .cornerRadius(12)
 
                 Button(action: {
-                    path.append(0)  // View1로 이동
+                    path.append(NavigationTarget.view1)  // ✅ enum 기반으로 수정
                 }) {
                     Text("보내기")
                         .frame(maxWidth: .infinity)
@@ -86,8 +86,8 @@ struct AccountInfo: View {
         .padding(.vertical)
     }
 }
-#Preview {
-    @State var path = NavigationPath()  // ✅ 타입 일치
-    return AccountInfo(account: MockData.sampleData[0][0], path: $path)
-}
 
+#Preview {
+    @State var path = NavigationPath()
+    AccountInfo(account: MockData.sampleData[0][0], path: $path)
+}

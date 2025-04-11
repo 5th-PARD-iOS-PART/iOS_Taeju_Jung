@@ -3,7 +3,6 @@ import SwiftUI
 struct ContentView: View {
     @State private var path = NavigationPath()
     @State private var senderAccount = MockData.sampleData[0][0]
-    @State private var selectedReceiver: View1Data? = nil
     @State private var amount: Int = 0
 
     let transactions: [AccountData] = AccountData.sampleTransactions
@@ -18,41 +17,22 @@ struct ContentView: View {
             ZStack(alignment: .top) {
                 VStack(spacing: 0) {
                     BackButton()
-                        .listRowSeparator(.hidden)
-                        .background(Color.white)
                     ThreeBotton()
-                        .background(Color.white)
-
                     AccountInfo(account: senderAccount, path: $path)
-                        .listRowSeparator(.hidden)
 
                     List {
                         Section {
-                            Color.gray.opacity(0.1)
-                                .frame(height: 10)
-                                .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
-                                .listRowSeparator(.hidden)
+                            Color.gray.opacity(0.1).frame(height: 10)
                         }
 
                         Section {
-                            FilterAndSearchBar()
-                                .cornerRadius(12)
-                                .listRowSeparator(.hidden)
-                                .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                            FilterAndSearchBar().cornerRadius(12)
                         }
 
                         ForEach(groupedTransactions, id: \.key) { date, items in
-                            Section(header:
-                                Text(date.monthDayString)
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                                    .padding(.horizontal, 5)
-                            ) {
+                            Section(header: Text(date.monthDayString).font(.caption).foregroundColor(.gray)) {
                                 ForEach(items) { item in
                                     TransactionRow(info: item)
-                                        .padding(.horizontal, 16)
-                                        .listRowSeparator(.hidden)
-                                        .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
                                 }
                             }
                         }
@@ -60,24 +40,26 @@ struct ContentView: View {
                     .listStyle(.plain)
                 }
             }
-            .navigationDestination(for: Int.self) { value in
-                if value == 0 {
-                    View1(path: $path, selectedReceiver: $selectedReceiver)
-                } else if value == 1, let receiver = selectedReceiver {
+            .navigationDestination(for: NavigationTarget.self) { destination in
+                switch destination {
+                case .view1:
+                    View1(path: $path)
+
+                case .view2(let receiver):
                     View2(
                         senderAccount: $senderAccount,
                         receiverAccount: receiver,
                         amount: $amount,
                         path: $path
                     )
-                } else if value == 2, let receiver = selectedReceiver {
-                    View3(
-                        senderAccount: $senderAccount,
-                        receiverAccount: receiver,
-                        amount: $amount,
-                        path: $path
-                    )
-                }
+
+                    case .view3(let receiver, let amount):
+                        View3(
+                            senderAccount: $senderAccount,
+                            receiverAccount: receiver,
+                            amount: amount, // ✅ 이제 Int 그대로 넘김
+                            path: $path
+                        )                }
             }
         }
     }

@@ -2,14 +2,12 @@ import SwiftUI
 
 struct View1: View {
     @Binding var path: NavigationPath
-    @Binding var selectedReceiver: View1Data?
     let myAccounts = View1Data.Data1[0]
     let recentAccounts = View1Data.Data1[1]
     @State private var selectedTab: SendTab = .account
 
     var body: some View {
         VStack(spacing: 16) {
-            // 뒤로가기 + 타이틀
             HStack {
                 Button(action: {
                     path.removeLast()
@@ -26,7 +24,6 @@ struct View1: View {
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-            // 탭 바
             HStack(spacing: 0) {
                 ForEach(SendTab.allCases, id: \.self) { tab in
                     Button(action: { selectedTab = tab }) {
@@ -43,7 +40,6 @@ struct View1: View {
             .background(Color(.systemGray5))
             .clipShape(RoundedRectangle(cornerRadius: 10))
 
-            // 검색 바
             HStack {
                 Text("계좌번호입력")
                     .foregroundColor(.gray)
@@ -51,19 +47,13 @@ struct View1: View {
                 Image(systemName: "camera")
                     .foregroundColor(.gray)
             }
-            Divider()
-                .padding()
-                .cornerRadius(10)
+            Divider().padding()
 
-            // 리스트 (계좌)
             List {
                 Section(header: Text("내 계좌").font(.caption)) {
                     ForEach(myAccounts) { account in
                         Button {
-                            selectedReceiver = account
-                            DispatchQueue.main.async {
-                                path.append(1)
-                            }
+                            path.append(NavigationTarget.view2(account))
                         } label: {
                             AccountRow(account: account)
                         }
@@ -74,10 +64,7 @@ struct View1: View {
                 Section(header: Text("최근 보낸 계좌").font(.caption)) {
                     ForEach(recentAccounts) { account in
                         Button {
-                            selectedReceiver = account
-                            DispatchQueue.main.async {
-                                path.append(1)
-                            }
+                            path.append(NavigationTarget.view2(account))
                         } label: {
                             AccountRow(account: account)
                         }
@@ -97,9 +84,7 @@ enum SendTab: String, CaseIterable {
     case contact = "연락처"
 }
 
-// MARK: - Preview
 #Preview {
     @State var path = NavigationPath()
-    @State var receiver: View1Data? = nil
-    return View1(path: $path, selectedReceiver: $receiver)
+    View1(path: $path)
 }

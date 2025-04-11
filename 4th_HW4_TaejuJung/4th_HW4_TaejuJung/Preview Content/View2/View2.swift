@@ -1,4 +1,3 @@
-// ✅ NavigationPath 적용 View2 리팩토링
 import SwiftUI
 
 struct View2: View {
@@ -54,12 +53,14 @@ struct View2: View {
             }
             .padding()
 
+            // 다음 버튼
             Button(action: {
                 if inputAmount > senderAccount.AccountBalance {
                     showExceededWarning = true
                 } else {
                     amount = inputAmount
-                    path.append(2) // ✅ View3로 이동
+                    path.append(NavigationTarget.view3(receiverAccount, inputAmount))
+
                 }
             }) {
                 Text("다음")

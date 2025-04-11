@@ -11,7 +11,7 @@ enum AccountType {
     
 }
 
-struct View1Data: Identifiable {
+struct View1Data: Identifiable,Hashable {
     let id = UUID()
    // var KindOfAccount: String
     var UserName: String
