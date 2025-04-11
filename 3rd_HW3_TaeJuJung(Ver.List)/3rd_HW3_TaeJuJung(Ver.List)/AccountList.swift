@@ -46,7 +46,6 @@ struct AccountList: View {
             .cornerRadius(10)
             .contentShape(Rectangle())
             .listRowSeparator(.hidden)
-            .background(Color.red)
             
         }
         .contentShape(Rectangle())
