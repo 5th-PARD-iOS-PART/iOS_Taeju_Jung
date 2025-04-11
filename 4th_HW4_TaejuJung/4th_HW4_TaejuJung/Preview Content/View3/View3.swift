@@ -3,7 +3,7 @@ import SwiftUI
 struct View3: View {
     @Binding var senderAccount: MockData
     let receiverAccount: View1Data
-    let amount: Int  // ✅ 더 이상 Binding 아님
+    let amount: Int 
     @Binding var path: NavigationPath
     
     var body: some View {
