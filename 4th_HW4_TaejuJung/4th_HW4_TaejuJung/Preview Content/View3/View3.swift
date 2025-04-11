@@ -75,7 +75,7 @@ struct View3: View {
             Button(action: {
                 if senderAccount.AccountBalance >= amount {
                     senderAccount.AccountBalance -= amount
-                    path.removeLast(path.count)  // ✅ 홈으로 복귀
+                    path.removeLast(path.count)
                 }
             }) {
                 Text("옮기기")
