@@ -57,7 +57,7 @@ struct ContentView: View {
                         View3(
                             senderAccount: $senderAccount,
                             receiverAccount: receiver,
-                            amount: amount, // ✅ 이제 Int 그대로 넘김
+                            amount: amount, 
                             path: $path
                         )                }
             }
